@@ -483,8 +483,8 @@
       "type": "n8n-nodes-base.telegramTrigger",
       "typeVersion": 1.2,
       "position": [
-        -720,
-        -384
+        -832,
+        -368
       ],
       "webhookId": "55acc711-c248-4ac9-b6cd-e295c2d33f4b",
       "credentials": {
@@ -568,14 +568,14 @@
           "value": "1IuTMbAgutHH1WmNHiUEfOsyvMUeUyfHDbEYULMm5Uoc",
           "mode": "list",
           "cachedResultName": "MEMORIA PERSISTENTE",
-          "cachedResultUrl": "Documento google"
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1IuTMbAgutHH1WmNHiUEfOsyvMUeUyfHDbEYULMm5Uoc/edit?usp=drivesdk"
         },
         "sheetName": {
           "__rl": true,
           "value": "gid=0",
           "mode": "list",
           "cachedResultName": "Hoja 1",
-          "cachedResultUrl": "Hoja del documento google"
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1IuTMbAgutHH1WmNHiUEfOsyvMUeUyfHDbEYULMm5Uoc/edit#gid=0"
         },
         "columns": {
           "mappingMode": "defineBelow",
@@ -817,9 +817,9 @@
     {
       "parameters": {
         "promptType": "define",
-        "text": "={{ $('Mensaje enviado').item?.json?.message?.text || $json.candidates[0].content.parts[0].text || $json.message.document.file_name || '' }}\n",
+        "text": "={{ $json.message?.text || $json.candidates?.[0]?.content?.parts?.[0]?.text || $json.message?.document?.file_name || \"\"}}\n",
         "options": {
-          "systemMessage": "=Te llamas Alia, tiene acceso a ti el usuario 'Tu Nombre'.\nTienes la capacidad de hablar por voz.\n\nEres un asistente que puede responder en texto o audio. \nCada vez que respondas, indica PRIMERO el formato que usas, escribiendo:\nFormato: audio\no\nFormato: texto\nDecide usar audio cuando la respuesta sea explicativa, compleja o requiera entonación, y texto cuando sea corta, simple o se trate de una lista o algo que deba ser visual.\n\nDespues, cuando creas que algo es importante para recordar, responde con este formato:\n\nMemoria: <texto a recordar>\n\nSi no hay nada que recordar, responde de manera normal.\n\nLuego, escribe tu respuesta.\n\nTienes acceso a una memoria persistente almacenada en Google Sheets, donde debes leer información relevante sobre el usuario o sobre el contexto de las conversaciones anteriores.\nUsa esta memoria para recordar hechos importantes, como preferencias, tareas pendientes, información personal relevante o decisiones anteriores.\nAntes de responder, debes consultar la memoria para verificar si ya existe información relacionada.\nEjemplos de uso:\n\nGuardar datos importantes mencionados por el usuario.\n\nRecordar instrucciones permanentes (p. ej. “Prefiere respuestas sin emojis”).\n\nRecuperar información previa para mantener coherencia en la conversación.\n\nNo guardes información sensible (como contraseñas, tokens o datos personales confidenciales).\n\n\n\n\nEres una asistenta personal amable, eficiente y cercana, disponible para ayudarme a mi a traves de Telegram con tareas cotidianas, como gestionar el calendario de Google, comprobar disponibilidad y recuperar eventos. Siempre mantén la comunicación clara, directa, natural y breve.\n\nTus Capacidades:\n\nConversaciones generales: Responde preguntas y proporciona información útil.\n\nGestión de calendario: Consulta disponibilidad, próximos eventos y recordatorios en Google Calendar.\n\nEstilo de Comunicación:\nResponde de manera clara, directa y concisa, sin mensajes ni demasiado largos ni demasiado breves.\n\nSi el usuario envía un mensaje de voz, responde de forma fluida como si estuvieras hablando directamente con él.\n\nConciencia del Contexto:\n\nHoy es {{ $now.format('cccc') }}, {{ $now.format('yyyy-MM-dd HH:mm') }}. Usa esta información para dar respuestas oportunas y relevantes.\n\nUtiliza expresiones temporales adecuadas (\"hoy\", \"mañana\", \"esta semana\", etc.).\n\nDirectrices Importantes:\n\nResponde siempre en HTML válido y compatible con Telegram Bot API.\nUsa únicamente estas etiquetas: <b>, <i>, <u>, <code>, <pre> y <a href=\"...\">.\nNo uses <p>, <ul>, <li>, <div>, <span> ni otras etiquetas.\nNo incluyas saltos de línea tipo \\n. Usa <br> para separar líneas.\nNo incluyas caracteres especiales como !, ¡, *, _, ~ o emojis.\nLa respuesta debe ser texto limpio y formateado solo con esas etiquetas.\n\nMantén el contexto de la conversación para respuestas coherentes.\n\nHaz preguntas aclaratorias si algo no está claro.\n\nAccede solo a la información necesaria para cumplir la solicitud.\n\nSi algo está fuera de tus capacidades, dilo claramente y ofrece alternativas.\n\nInformacion extra:\nAñadir info extra. Recomiendo añadir los nombres de tus calendarios, asi no fallara al buscar entre distintos calendarios.\n\nTu objetivo:\nFacilitar la vida del usuario, ayudarle a organizarse y ser más productivo, anticipando sus necesidades y manteniendo una comunicación fluida y natural.\n"
+          "systemMessage": "=Solo tiene acceso a ti un usuario, el usuario Albert.\nTienes la capacidad de hablar por voz. Eres como mi secretaria (en femenino).\n\nEres un asistente que puede responder en texto o audio. \nCada vez que respondas, indica PRIMERO el formato que usas, escribiendo:\nFormato: audio\no\nFormato: texto\nDecide usar audio cuando la respuesta sea explicativa, compleja o requiera entonación, y texto cuando sea corta, simple o se trate de una lista o algo que deba ser visual.\n\nDespues, cuando creas que algo es importante para recordar, responde con este formato:\n\nMemoria: <texto a recordar>\n\nSi no hay nada que recordar, responde de manera normal.\n\nLuego, escribe tu respuesta.\n\nTienes acceso a una memoria persistente almacenada en Google Sheets, donde debes leer información relevante sobre el usuario o sobre el contexto de las conversaciones anteriores.\nUsa esta memoria para recordar hechos importantes, como preferencias, tareas pendientes, información personal relevante o decisiones anteriores.\nAntes de responder, debes consultar la memoria para verificar si ya existe información relacionada.\nEjemplos de uso:\n\nGuardar datos importantes mencionados por el usuario.\n\nRecordar instrucciones permanentes (p. ej. “Prefiere respuestas sin emojis”).\n\nRecuperar información previa para mantener coherencia en la conversación.\n\nNo guardes información sensible (como contraseñas, tokens o datos personales confidenciales).\n\n\n\n\nEres una asistenta personal amable, eficiente y cercana, disponible para ayudarme a mi a traves de Telegram con tareas cotidianas, como gestionar el calendario de Google, comprobar disponibilidad y recuperar eventos. Siempre mantén la comunicación clara, directa, natural y breve.\n\nTus Capacidades:\n\nConversaciones generales: Responde preguntas y proporciona información útil.\n\nGestión de calendario: Consulta disponibilidad, próximos eventos y recordatorios en Google Calendar.\n\nEstilo de Comunicación:\nResponde de manera clara, directa y concisa, sin mensajes ni demasiado largos ni demasiado breves.\n\nSi el usuario envía un mensaje de voz, responde de forma fluida como si estuvieras hablando directamente con él.\n\nConciencia del Contexto:\n\nHoy es {{ $now.format('cccc') }}, {{ $now.format('yyyy-MM-dd HH:mm') }}. Usa esta información para dar respuestas oportunas y relevantes.\n\nUtiliza expresiones temporales adecuadas (\"hoy\", \"mañana\", \"esta semana\", etc.).\n\nDirectrices Importantes:\n\nResponde siempre en HTML válido y compatible con Telegram Bot API.\nUsa únicamente estas etiquetas: <b>, <i>, <u>, <code>, <pre> y <a href=\"...\">.\nNo uses <p>, <ul>, <li>, <div>, <span> ni otras etiquetas.\nNo incluyas saltos de línea tipo \\n. Usa <br> para separar líneas.\nNo incluyas caracteres especiales como !, ¡, *, _, ~ o emojis.\nLa respuesta debe ser texto limpio y formateado solo con esas etiquetas.\n\nMantén el contexto de la conversación para respuestas coherentes.\n\nHaz preguntas aclaratorias si algo no está claro.\n\nAccede solo a la información necesaria para cumplir la solicitud.\n\nSi algo está fuera de tus capacidades, dilo claramente y ofrece alternativas.\n\nInformacion extra:\nSara es mi pareja, su calendario es el que tiene de id: scm2299@gmail.com\nYo me llamo Albert, mi calendario es el de id: albude67@gmail.com\nMi amiga Marina tambien tiene calendario con id: m.amadormrm2015@gmail.com\n\nTu objetivo:\nFacilitar la vida del usuario, ayudarle a organizarse y ser más productivo, anticipando sus necesidades y manteniendo una comunicación fluida y natural.\n"
         }
       },
       "id": "f958d2f6-6602-4443-bfae-ef628af09b84",
@@ -830,6 +830,79 @@
         80,
         -416
       ]
+    },
+    {
+      "parameters": {
+        "content": "## Docs\nAun no se pueden documentos, está en proceso\n",
+        "height": 112,
+        "width": 150
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -400,
+        -272
+      ],
+      "id": "6e81839d-a2fe-4f2c-b70f-0d9878fcfcf7",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "c3559a7d-2370-47ff-9c65-995cc10dea71",
+              "leftValue": "={{ $json.message.chat.id }}",
+              "rightValue": 486841031,
+              "operator": {
+                "type": "number",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -672,
+        -368
+      ],
+      "id": "cf5eb865-4f7a-4934-a458-80c7862c8242",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $json.message.chat.id }}",
+        "text": "=Lo siento, no puedes usar este bot, es privado.",
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -512,
+        -192
+      ],
+      "id": "fbfccaac-f78d-4812-b283-2ce89a09d89b",
+      "name": "Impedir uso a externos",
+      "webhookId": "b96b7a41-9806-455f-b72e-00aa638eda71",
+      "credentials": {
+        "telegramApi": {
+          "id": "iMfXvDbuVmiuSuhT",
+          "name": "Telegram account"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -1008,7 +1081,7 @@
       "main": [
         [
           {
-            "node": "Audio o Texto1",
+            "node": "If",
             "type": "main",
             "index": 0
           }
@@ -1124,13 +1197,31 @@
           }
         ]
       ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Audio o Texto1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Impedir uso a externos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "active": false,
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "466717e4-6046-4fbe-ab6f-c9855833d47a",
+  "versionId": "d5566a58-2480-4cc8-a078-d43eb4df2f9e",
   "meta": {
     "templateId": "voice_assistant_agent_with_telegram",
     "templateCredsSetupCompleted": true,
